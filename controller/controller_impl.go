@@ -6,7 +6,6 @@ import (
 	"projek-1/model/web"
 	"projek-1/service"
 	"strconv"
-
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -30,7 +29,7 @@ func (Controller *ControllerImpl) Create (writer http.ResponseWriter, request *h
 		Status: "ok",
 		Data: categroyResponse,
 	}
-	helper.WriteToResponseBody(writer, webResponse)
+	helper.WriteToResponseBody(write, webResponse)
 }
 
 func(controller *ControllerImpl) Update (writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -45,7 +44,7 @@ func(controller *ControllerImpl) Update (writer http.ResponseWriter, request *ht
 		Status: "ok",
 		Data: categoryResponse,
 	}
-	helper.WriteToResponseBody(writer, webResponse)
+	helper.WriteToResponseBody(write, webResponse)
 }
 
 func (Controller *ControllerImpl) Delete (writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -58,7 +57,7 @@ func (Controller *ControllerImpl) Delete (writer http.ResponseWriter, request *h
 		Code: 200,
 		Status: "ok",
 	}
-	helper.WriteToResponseBody(writer, webResponse)
+	helper.WriteToResponseBody(write, webResponse)
 }
 
 func (controller *ControllerImpl) FindById (writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -72,7 +71,7 @@ func (controller *ControllerImpl) FindById (writer http.ResponseWriter, request 
 		Status: "ok",
 		Data: categoryResponse,
 	}
-	helper.WriteToResponseBody(writer, webResponse)
+	helper.WriteToResponseBody(write, webResponse)
 }
 
 func (controller *ControllerImpl) FindAll (writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -83,6 +82,6 @@ func (controller *ControllerImpl) FindAll (writer http.ResponseWriter, request *
 		Data:   categoryResponses,
 	}
 
-	helper.WriteToResponseBody(writer, webResponse)
+	helper.WriteToResponseBody(write, webResponse)
 }
 
