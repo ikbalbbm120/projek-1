@@ -29,14 +29,14 @@ func (Controller *ControllerImpl) Create (writer http.ResponseWriter, request *h
 		Status: "ok",
 		Data: categroyResponse,
 	}
-	helper.WriteToResponseBody(write, webResponse)
+	helper.WriteToResponseBody(writer, webResponse)
 }
 
 func(controller *ControllerImpl) Update (writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	CategoryUpdateRequest := web.CategoryUpdateRequest{}
 	helper.ReadFromRequestBody(request, &CategoryUpdateRequest)
 
-	CategoryUpdateRequest.Id = id
+	CategoryUpdateRequest.Id = CategoryUpdateRequest.Id
 
 	categoryResponse := controller.Service.Update(request.Context(), CategoryUpdateRequest)
 	webResponse := web.WebResponse {
@@ -44,7 +44,7 @@ func(controller *ControllerImpl) Update (writer http.ResponseWriter, request *ht
 		Status: "ok",
 		Data: categoryResponse,
 	}
-	helper.WriteToResponseBody(write, webResponse)
+	helper.WriteToResponseBody(writer, webResponse)
 }
 
 func (Controller *ControllerImpl) Delete (writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -57,7 +57,7 @@ func (Controller *ControllerImpl) Delete (writer http.ResponseWriter, request *h
 		Code: 200,
 		Status: "ok",
 	}
-	helper.WriteToResponseBody(write, webResponse)
+	helper.WriteToResponseBody(writer, webResponse)
 }
 
 func (controller *ControllerImpl) FindById (writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -71,7 +71,7 @@ func (controller *ControllerImpl) FindById (writer http.ResponseWriter, request 
 		Status: "ok",
 		Data: categoryResponse,
 	}
-	helper.WriteToResponseBody(write, webResponse)
+	helper.WriteToResponseBody(writer, webResponse)
 }
 
 func (controller *ControllerImpl) FindAll (writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
@@ -82,6 +82,6 @@ func (controller *ControllerImpl) FindAll (writer http.ResponseWriter, request *
 		Data:   categoryResponses,
 	}
 
-	helper.WriteToResponseBody(write, webResponse)
+	helper.WriteToResponseBody(writer, webResponse)
 }
 

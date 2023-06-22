@@ -12,7 +12,7 @@ import (
 )
 
 func main () {
-	db := app.db()
+	db := app.NewDB()
 	validate := validator.New()
 	Repository := repository.NewRepository()
 	Service := service.NewService(Repository, db, validate)
@@ -23,7 +23,7 @@ func main () {
 	server := http.Server {
 		Addr: "localhost:3000",
 
-		Handler: middleware.NewAuthMiddleware(router),
+		Handler: middleware.NewAuthMiddleware(&router),
 	}
 	err := server.ListenAndServe()
 	helper.PanicIfError(err)

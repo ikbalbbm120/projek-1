@@ -40,7 +40,7 @@ func setupRouter(db *sql.DB) http.Handler {
 	Service := service.NewService(Repository, db, validate)
 	Controller := controller.NewController(Service)
 	router := app.NewRouter(Controller)
-	return middleware.NewAuthMiddleware(router)
+	return middleware.NewAuthMiddleware(&router)
 }
 
 func TruncateCategory(db *sql.DB) {
